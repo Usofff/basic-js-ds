@@ -38,7 +38,7 @@ class BinarySearchTree {
         }
         current = current.right;
       } else {
-        return this; // Duplicate value, do nothing
+        return this; 
       }
     }
   }
@@ -110,14 +110,11 @@ class BinarySearchTree {
             node.right = this._removeNode(node.right, data);
             return node;
         } else {
-            // Node to be deleted found
 
-            // Case 1: Node with no children
             if (!node.left && !node.right) {
                 return null;
             }
 
-            // Case 2: Node with one child
             if (!node.left) {
                 return node.right;
             }
@@ -125,14 +122,12 @@ class BinarySearchTree {
                 return node.left;
             }
 
-            // Case 3: Node with two children
-            // Find the inorder successor (smallest node in the right subtree)
             let temp = node.right;
             while (temp.left) {
                 temp = temp.left;
             }
-            node.data = temp.data; // Copy the inorder successor's data to the node
-            node.right = this._removeNode(node.right, temp.data); // Delete the inorder successor
+            node.data = temp.data;
+            node.right = this._removeNode(node.right, temp.data);
             return node;
         }
     }
